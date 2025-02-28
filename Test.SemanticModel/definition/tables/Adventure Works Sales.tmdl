@@ -1,0 +1,29 @@
+table 'Adventure Works Sales'
+	excludeFromModelRefresh
+	lineageTag: 76bb5657-12be-4efa-a0ac-ec5a72b915ce
+
+	column Dummy
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: ba46da4a-346b-4424-979a-466b1183ab65
+		summarizeBy: sum
+		sourceColumn: Dummy
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Adventure Works Sales-a25eb2cc-f2a7-47b6-aaf9-a0cc6c7d6368' = m
+		mode: import
+		queryGroup: 'Parameter Tables'
+		source =
+				let
+				    Source = Value.NativeQuery(AdWorksSQLServer, "Select null as Dummy")
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

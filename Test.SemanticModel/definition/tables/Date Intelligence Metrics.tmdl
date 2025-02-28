@@ -1,0 +1,37 @@
+table 'Date Intelligence Metrics'
+	excludeFromModelRefresh
+	lineageTag: 24b11244-97dc-4577-b036-2c6eaa5f147a
+
+	measure 'Last Refresh Msg' = ```
+			
+			    VAR __CurrentDateValue = MAX('Current Date'[CurrentDate])
+			RETURN
+			    "Last Refreshed: " & __CurrentDateValue
+			```
+		lineageTag: da3c5edb-d8bb-4dfe-bccf-2afc23a8135d
+
+	column Dummy
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 2a1dce92-339b-47f2-8f06-9cbbd503815a
+		summarizeBy: sum
+		sourceColumn: Dummy
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Date Intelligence Metrics-38d3bf3d-fc87-464f-9f4d-a376f5b5493d' = m
+		mode: import
+		queryGroup: 'Parameter Tables'
+		source =
+				let
+				    Source = Value.NativeQuery(AdWorksSQLServer, "Select null as Dummy")
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,37 @@
+table 'Current Date'
+	lineageTag: 3d92c869-869c-4669-8bb4-81e8dec5e060
+
+	column CurrentDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b43d2745-5c47-400c-ad57-007ebaff337c
+		summarizeBy: none
+		sourceColumn: CurrentDate
+
+		variation Variation
+			isDefault
+			relationship: 852ef3a8-31b7-4eee-965b-82b82aaa9530
+			defaultHierarchy: LocalDateTable_b5b32273-bff3-4096-bd80-abbffe8cf015.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition 'Current Date-b0aa6a9c-f158-4e1b-a9cf-a20e06665e7a' = m
+		mode: import
+		queryGroup: 'Parameter Tables'
+		source =
+				let
+				    RefreshDateTime = DateTime.LocalNow(),
+				    TimeZoneOffset = -5,
+				    RefreshDateTimeAdjusted = RefreshDateTime + #duration(0,TimeZoneOffset,0,0),
+				    RefreshDateAdjusted = DateTime.Date(RefreshDateTimeAdjusted),
+				    TableCreate = Table.FromRecords({[CurrentDate = RefreshDateAdjusted]}),
+				    DateType = Table.TransformColumnTypes(TableCreate,{"CurrentDate", type date})
+				in
+				    DateType
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

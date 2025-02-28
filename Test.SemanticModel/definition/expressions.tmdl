@@ -1,0 +1,174 @@
+expression ProdServer = "morgan" meta [IsParameterQuery=true, Type="Any", IsParameterQueryRequired=true]
+	lineageTag: 110de937-12da-4ad8-9f1f-73b3fc8828e1
+	queryGroup: 'Data Source Parameters'
+
+	annotation PBI_ResultType = Text
+
+	annotation PBI_NavigationStepName = Navigation
+
+expression DevServer = "localhost\MSSQLSERVER" meta [IsParameterQuery=true, Type="Any", IsParameterQueryRequired=true]
+	lineageTag: 9b09c4bb-bc81-4d8b-9e9e-8334d7c71513
+	queryGroup: 'Data Source Parameters'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression DevDB = "AdventureWorksDW2019_Dev" meta [IsParameterQuery=true, Type="Any", IsParameterQueryRequired=true]
+	lineageTag: 46ea37cd-d505-432b-af08-a01e7f904ec4
+	queryGroup: 'Data Source Parameters'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression ProdDB = "AdventureWorksDW2019_Prod" meta [IsParameterQuery=true, Type="Any", IsParameterQueryRequired=true]
+	lineageTag: 2c6b0274-e102-455e-9f42-4f50f2b1bcf0
+	queryGroup: 'Data Source Parameters'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression SalesPlanDirectory = "C:\Users\dario\OneDrive - DM\Estudios\Power BI Pro\Chapter 3" meta [IsParameterQuery=true, Type="Any", IsParameterQueryRequired=true]
+	lineageTag: 53d7cf44-80cf-454c-99f4-a4893bd681ee
+	queryGroup: 'Data Source Parameters'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression SalesPlanFile = "AdWorks Sales Plan.xlsx" meta [IsParameterQuery=true, Type="Any", IsParameterQueryRequired=true]
+	lineageTag: 0d5f9959-a37b-47da-b803-8b35c7eebd74
+	queryGroup: 'Data Source Parameters'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression AdWorksSQLServer =
+		let
+		    Source = Sql.Database(ProdServer, SourceDB)
+		in
+		    Source
+	lineageTag: 02080f47-5473-46b6-ba6c-1962f5292c91
+	queryGroup: 'Staging Queries'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression SalesPlanFilePath =
+		let
+		    Source = SalesPlanDirectory & "\" & SalesPlanFile
+		in
+		    Source
+	lineageTag: 67839db7-673a-4eee-9fce-0da65183f206
+	queryGroup: 'Staging Queries'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression CurrentDayQry =
+		let
+		    Source = DateTime.Date(DateTime.LocalNow())
+		in
+		    Source
+	lineageTag: 673c9408-71a4-4854-a299-75ab43bd87e1
+	queryGroup: 'Staging Queries'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Date
+
+expression 'Sales and Margin Plan' =
+		let
+		    Workbook = Excel.Workbook(File.Contents(SalesPlanFilePath),true,true),
+		    Sheet1_Sheet = Workbook{[Item="Sheet1",Kind="Sheet"]}[Data],
+		    #"Changed Type" = Table.TransformColumnTypes(Sheet1_Sheet,{{"Calendar Yr-Mo", type date}, {"Sales Territory Region", type text}, {"Product Subcategory", type text}, {"Internet Net Sales", Int64.Type}, {"Internet Net Sales Margin %", Int64.Type}, {"Reseller Net Sales", Int64.Type}, {"Reseller Net Sales Margin %", Int64.Type}, {"Internet Margin $", Int64.Type}, {"Reseller Margin $", Int64.Type}, {"Year", Int64.Type}, {"Calendar Yr-Mo Sort", Int64.Type}}),
+		    DataTypes = Table.TransformColumnTypes(#"Changed Type",
+		        {
+		            {"Calendar Yr-Mo", type text},
+		            {"Calendar Yr-Mo Sort", Int64.Type},
+		            {"Year", Int64.Type},
+		            {"Sales Territory Region", type text},
+		            {"Internet Net Sales", Currency.Type},
+		            {"Internet Net Sales Margin %", type number},
+		            {"Reseller Net Sales", Currency.Type},
+		            {"Reseller Net Sales Margin %", type number},
+		            {"Internet Margin $", Currency.Type},
+		            {"Reseller Margin $", Currency.Type}
+		        }
+		                                        )
+		in
+		    DataTypes
+	lineageTag: d946db72-b8b4-4e0e-9240-90c122adc36b
+	queryGroup: 'Fact Table Queries'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression Trailing3Years = ```
+		let
+		//Trailing Three Year Date Values
+		    CurrentDate = DateTime.Date(DateTime.LocalNow()),
+		    StartYear = Date.Year(CurrentDate)-3,
+		    StartDate = #date(StartYear,1,1), 
+		//Reseller Sales View
+		    Source = AdWorksSQLServer,
+		    ResellerSales = Source{[Schema="dbo",Item="FactResellerSales"]}[Data], 
+		//Trailing Three Year Filter
+		    FilterResellerSales = 
+		        Table.SelectRows(ResellerSales, each Date.From([OrderDate]) >= StartDate and Date.From([OrderDate]) <= CurrentDate)
+		in
+		    FilterResellerSales
+		```
+	lineageTag: eea0f67d-75cf-4914-952b-559c3428efb5
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
+expression CustomerHistory = ```
+		let
+		// Customer History Date Bands
+		   CurrentDate = Date.AddYears(DateTime.Date(DateTime.LocalNow()),-7),
+		   OneYearAgo = Date.AddYears(CurrentDate,-1),
+		   TwoYearsAgo = Date.AddYears(CurrentDate,-2),
+		   ThreeYearsAgo = Date.AddYears(CurrentDate,-3),
+		//Customer Dimension
+		    Source = AdWorksSQLServer,
+		    Customer = Source{[Schema="dbo",Item="DimCurrency"]}[Data],
+		    CustomerHistoryColumn = Table.AddColumn(Customer, "Customer History Segment", 
+		    each
+		    if [DateFirstPurchase] >= OneYearAgo then "First Year Customer" 
+		    else if [DateFirstPurchase] >= TwoYearsAgo and [DateFirstPurchase] < OneYearAgo then "Second Year Customer"
+		    else if [DateFirstPurchase] >= ThreeYearsAgo and [DateFirstPurchase] < TwoYearsAgo then "Third Year Customer" 
+		else "Legacy Customer", type text)
+		in
+		    CustomerHistoryColumn
+		```
+	lineageTag: a465a416-ec15-4fe3-b04d-ac807b4b4d59
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression UATDB = "AdventureWorksDW2019_UAT" meta [IsParameterQuery=true, Type="Any", IsParameterQueryRequired=true]
+	lineageTag: bfa7d542-790c-4932-9a8b-af9a20c657c4
+	queryGroup: 'Data Source Parameters'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression SourceDB = "AdventureWorksDW2019_Dev" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: c18de9b2-486c-4df8-98cd-7ebd453de3b1
+	queryGroup: 'Data Source Parameters'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+

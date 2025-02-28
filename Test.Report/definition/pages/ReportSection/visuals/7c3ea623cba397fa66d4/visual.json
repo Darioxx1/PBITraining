@@ -1,0 +1,81 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
+  "name": "7c3ea623cba397fa66d4",
+  "position": {
+    "x": 135.73441604967758,
+    "y": 194.43037974683546,
+    "z": 2000,
+    "height": 299.59398137090994,
+    "width": 299.59398137090994,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Reseller Sales"
+                        }
+                      },
+                      "Property": "SalesAmount"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Reseller Sales.SalesAmount)",
+              "nativeQueryRef": "SalesAmount"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Reseller Sales"
+                      }
+                    },
+                    "Property": "SalesAmount"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "visualContainerObjects": {
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Nombre de cliente en Alt Texto'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,10 @@
+DEFINE
+    MEASURE 'Internet Sales'[_internet_sales_amount_sum] = SUM('Internet Sales'[SalesAmount])
+    MEASURE 'Internet Sales'[_internet_sales_amount_last_year] = CALCULATE([_internet_sales_amount_sum], SAMEPERIODLASTYEAR('Date'[Date]))
+
+EVALUATE
+    SUMMARIZECOLUMNS(
+		'Date'[Calendar Year],
+        "_internet_sales_amount_sum", 'Internet Sales'[_internet_sales_amount_sum],
+        "_internet_sales_amount_last_year", 'Internet Sales'[_internet_sales_amount_last_year]
+    )

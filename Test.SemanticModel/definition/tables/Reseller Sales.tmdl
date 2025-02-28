@@ -1,0 +1,288 @@
+table 'Reseller Sales'
+	lineageTag: 5746e857-0d99-4b3f-bc43-43b1b509a8e3
+
+	column ProductKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 14b00a0f-636c-49ba-9f03-835c7a24e8e1
+		summarizeBy: none
+		sourceColumn: ProductKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderDateKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 98ef801a-5d1e-4586-baf1-e9a62abe9be3
+		summarizeBy: count
+		sourceColumn: OrderDateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column DueDateKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 505374c6-f73b-447a-bf71-cccb868fbcb7
+		summarizeBy: none
+		sourceColumn: DueDateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShipDateKey
+		dataType: int64
+		formatString: 0
+		lineageTag: ac7cc0a0-3d4b-4f7f-a0fc-6fecb2297ae8
+		summarizeBy: count
+		sourceColumn: ShipDateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ResellerKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 09b39d27-a62e-4349-8148-1a5a08fd0417
+		summarizeBy: none
+		sourceColumn: ResellerKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmployeeKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 115a5dcb-f0f1-43ac-8e1b-486c3ef0aa2d
+		summarizeBy: none
+		sourceColumn: EmployeeKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column PromotionKey
+		dataType: int64
+		formatString: 0
+		lineageTag: fed83e38-b4ea-4ea8-bc89-d41111ec772c
+		summarizeBy: none
+		sourceColumn: PromotionKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column CurrencyKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 780f350f-a7a8-4d84-ae1e-f1674ca361a8
+		summarizeBy: none
+		sourceColumn: CurrencyKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesTerritoryKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 0af4016b-976b-44c0-bc44-5773e2069305
+		summarizeBy: count
+		sourceColumn: SalesTerritoryKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesOrderNumber
+		dataType: string
+		lineageTag: 9408faa5-0302-4aa0-a8a3-ccf74f81bdef
+		summarizeBy: none
+		sourceColumn: SalesOrderNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesOrderLineNumber
+		dataType: int64
+		formatString: 0
+		lineageTag: 09baf45c-cbe3-4d7e-9bc1-91b7ceb18fde
+		summarizeBy: sum
+		sourceColumn: SalesOrderLineNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column RevisionNumber
+		dataType: int64
+		formatString: 0
+		lineageTag: cdd06d14-036f-4d29-8b9b-c9ea56c1e8a2
+		summarizeBy: sum
+		sourceColumn: RevisionNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderQuantity
+		dataType: int64
+		formatString: 0
+		lineageTag: 8f1bb3c8-4e8d-427d-961a-5b3f11fab792
+		summarizeBy: sum
+		sourceColumn: OrderQuantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column UnitPrice
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 2df4546d-1148-43b2-bb76-35d35dc3c793
+		summarizeBy: sum
+		sourceColumn: UnitPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column ExtendedAmount
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 7bf1a80e-3869-476d-a3e1-070ec4211f9a
+		summarizeBy: sum
+		sourceColumn: ExtendedAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column UnitPriceDiscountPct
+		dataType: double
+		lineageTag: 4f8a0df7-59ab-4015-b7cb-485ffd449c4d
+		summarizeBy: sum
+		sourceColumn: UnitPriceDiscountPct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DiscountAmount
+		dataType: double
+		lineageTag: 600f7a61-9658-4087-9e74-625066e2417a
+		summarizeBy: sum
+		sourceColumn: DiscountAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ProductStandardCost
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: c0ade03f-82b4-4afb-bbb5-cee1cfadadc0
+		summarizeBy: sum
+		sourceColumn: ProductStandardCost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column TotalProductCost
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 057ade0d-fee2-4b44-a073-9aa1ac42d103
+		summarizeBy: sum
+		sourceColumn: TotalProductCost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column SalesAmount
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 63080f9b-e696-4126-a9c6-c040f4bdf5ac
+		summarizeBy: sum
+		sourceColumn: SalesAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column TaxAmt
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: c46a076b-2162-4eb9-8dcc-d6009faea324
+		summarizeBy: sum
+		sourceColumn: TaxAmt
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column Freight
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: f8eb05f5-4837-43f3-8eaa-f170d92f72c0
+		summarizeBy: sum
+		sourceColumn: Freight
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column CarrierTrackingNumber
+		dataType: string
+		lineageTag: c1a00ccf-833c-4022-bd74-826db811774d
+		summarizeBy: none
+		sourceColumn: CarrierTrackingNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerPONumber
+		dataType: string
+		lineageTag: d83abc33-7bfd-4903-b197-3d239477086a
+		summarizeBy: none
+		sourceColumn: CustomerPONumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: d8bc93ac-ddb0-4e8e-8692-4272f8090e6a
+		summarizeBy: none
+		sourceColumn: OrderDate
+
+		variation Variation
+			isDefault
+			relationship: f36880f4-f758-4b63-a2fd-5732eea02c5f
+			defaultHierarchy: LocalDateTable_2e10be0e-1f01-4217-873d-818ceacb2f99.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DueDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 70274a0d-9f8c-4ca9-8954-fee2bf6a5b14
+		summarizeBy: none
+		sourceColumn: DueDate
+
+		variation Variation
+			isDefault
+			relationship: d5c7c4c5-db11-439d-a456-56d841d7f1e8
+			defaultHierarchy: LocalDateTable_76e7b3a3-c8fa-4233-9406-1d3dee5fca5b.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShipDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: ae2cc68a-e6de-4950-b786-97337308ac4e
+		summarizeBy: none
+		sourceColumn: ShipDate
+
+		variation Variation
+			isDefault
+			relationship: 830f7c6f-2c56-4e71-be6b-968f8131c3e6
+			defaultHierarchy: LocalDateTable_c51668bf-85f6-48f4-835c-ddfa3d41ad3d.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Reseller Sales-8ddb799c-a64c-4afd-a4a6-22e5f51735d6' = m
+		mode: import
+		queryGroup: 'Fact Table Queries'
+		source =
+				let
+				    Source = AdWorksSQLServer,
+				    dbo_FactResellerSales = Source{[Schema="dbo",Item="FactResellerSales"]}[Data]
+				in
+				    dbo_FactResellerSales
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

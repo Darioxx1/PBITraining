@@ -1,0 +1,29 @@
+table BridgeProductSubCat
+	isHidden
+	lineageTag: f69156bb-b710-4e9d-b4de-6cd325b83fdc
+
+	column 'Product Subcategory'
+		dataType: string
+		lineageTag: e75a5da5-b859-457c-a943-0a505d8d3329
+		summarizeBy: none
+		sourceColumn: Product Subcategory
+
+		annotation SummarizationSetBy = Automatic
+
+	partition BridgeProductSubCat-fa61384f-a296-4bdb-9030-58a9f85b299f = m
+		mode: import
+		queryGroup: 'Bridge Table Queries'
+		source = ```
+				let
+				    SubCats = Table.SelectColumns(Product, {"Product Subcategory"}),
+				    DistinctSubCats = Table.Distinct(SubCats)
+				in    
+				    DistinctSubCats
+				```
+
+	changedProperty = IsHidden
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

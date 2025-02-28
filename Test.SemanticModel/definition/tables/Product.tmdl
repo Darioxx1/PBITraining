@@ -1,0 +1,329 @@
+table Product
+	lineageTag: 9e44b1e4-97e1-4c57-8341-0125deb9bc28
+
+	column ProductKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 8268acc6-77b9-477f-8bd1-af39c641d4f6
+		summarizeBy: none
+		sourceColumn: ProductKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductAlternateKey
+		dataType: string
+		lineageTag: ce1aa9d8-3026-4937-b00c-b488cab74444
+		summarizeBy: none
+		sourceColumn: ProductAlternateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Weight Unit'
+		dataType: string
+		lineageTag: d7b215b4-b26e-4d56-b828-77c7d9f635da
+		summarizeBy: none
+		sourceColumn: Product Weight Unit
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Size Unit'
+		dataType: string
+		lineageTag: 9db4c3de-0f1a-4c87-9883-5513dbcb1f40
+		summarizeBy: none
+		sourceColumn: Product Size Unit
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Name'
+		dataType: string
+		lineageTag: 45ba3e09-5e83-4c3c-b3ee-f365755eb5f8
+		summarizeBy: none
+		sourceColumn: Product Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Cost'
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 48cb04e4-57ea-48c8-9931-415fc043b628
+		summarizeBy: sum
+		sourceColumn: Product Cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column 'Product Finished Good'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 98c9ee0b-7226-4461-a4ef-a88b71b515dc
+		summarizeBy: none
+		sourceColumn: Product Finished Good
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Color'
+		dataType: string
+		lineageTag: f2c22350-1235-4e38-97b9-191e3faa34d0
+		summarizeBy: none
+		sourceColumn: Product Color
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Safety Stock Level'
+		dataType: int64
+		formatString: 0
+		lineageTag: 19d29cf3-3d8e-4d15-89c7-7bd26ec6626a
+		summarizeBy: sum
+		sourceColumn: Product Safety Stock Level
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Reorder Point'
+		dataType: int64
+		formatString: 0
+		lineageTag: b4705157-b130-4a57-8769-8b782cd3b994
+		summarizeBy: sum
+		sourceColumn: Product Reorder Point
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product List Price'
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 651b4f26-4b0a-4b15-92ed-ef2d9d167fe8
+		summarizeBy: sum
+		sourceColumn: Product List Price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column 'Product Size'
+		dataType: string
+		lineageTag: 4bf67f62-becf-4f79-963b-2d38d7476352
+		summarizeBy: none
+		sourceColumn: Product Size
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Size Range'
+		dataType: string
+		lineageTag: 62f30f16-c1b4-4e4d-96c2-f2989ea72bc6
+		summarizeBy: none
+		sourceColumn: Product Size Range
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Weight'
+		dataType: double
+		lineageTag: da7547fe-1057-4690-954d-2720f42b6135
+		summarizeBy: sum
+		sourceColumn: Product Weight
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Product Days To Manufacture'
+		dataType: int64
+		formatString: 0
+		lineageTag: 6469cd22-b4f6-4c03-991f-1b4a496ff549
+		summarizeBy: sum
+		sourceColumn: Product Days To Manufacture
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Line'
+		dataType: string
+		lineageTag: 4b53752a-1553-4429-8d6c-38582b5b0391
+		summarizeBy: none
+		sourceColumn: Product Line
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Dealer Price'
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 90c40cd9-5ea4-4c38-8e48-941454926539
+		summarizeBy: sum
+		sourceColumn: Product Dealer Price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column 'Product Class'
+		dataType: string
+		lineageTag: dd321791-b923-4203-b456-4bcaa23e314d
+		summarizeBy: none
+		sourceColumn: Product Class
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Style'
+		dataType: string
+		lineageTag: daaa62dc-9fa5-4ae3-ba21-00206ec2eb81
+		summarizeBy: none
+		sourceColumn: Product Style
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Model'
+		dataType: string
+		lineageTag: 859b41e7-f529-4c19-a10d-266ba3141d96
+		summarizeBy: none
+		sourceColumn: Product Model
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Description'
+		dataType: string
+		lineageTag: 5c5d8bdf-dd76-413d-9966-31dcd88bfeb9
+		summarizeBy: none
+		sourceColumn: Product Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Start Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 2543e39d-7c28-4f1d-a670-fbd9e1f2b892
+		summarizeBy: none
+		sourceColumn: Product Start Date
+
+		variation Variation
+			isDefault
+			relationship: 7925555a-1c77-45ad-a40c-a6f7d5e8a896
+			defaultHierarchy: LocalDateTable_589c11dc-8291-41db-a860-733cd2ccfb38.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product End Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: dbaedb73-8f60-4adc-b2c1-163a3fd88cc6
+		summarizeBy: none
+		sourceColumn: Product End Date
+
+		variation Variation
+			isDefault
+			relationship: dc6b8314-d3d8-4e06-9435-eae345638518
+			defaultHierarchy: LocalDateTable_94f0fd38-86c6-48f4-8ea6-9115170ffcf1.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Status'
+		dataType: string
+		lineageTag: c734ffba-93fc-4114-b5c5-b1c12a6ce0c3
+		summarizeBy: none
+		sourceColumn: Product Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Subcategory'
+		dataType: string
+		lineageTag: 5d8a78e0-6399-445d-8e9d-74680f16bdc8
+		summarizeBy: none
+		sourceColumn: Product Subcategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Category'
+		dataType: string
+		lineageTag: e4de8ca9-25c8-4c95-9dcb-bb723184d3db
+		summarizeBy: none
+		sourceColumn: Product Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Category Group'
+		dataType: string
+		lineageTag: 5e7388e8-2823-4a60-97ca-15cbd39b576e
+		summarizeBy: none
+		sourceColumn: Product Category Group
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Product-bde6f2d8-af42-455f-8b45-1ff7961c24e8 = m
+		mode: import
+		queryGroup: 'Dimension Table Queries'
+		source = ```
+				let
+				    Source = AdWorksSQLServer,
+				    Data = Source{[Schema="dbo",Item="DimProduct"]}[Data],
+				    Subcategory = 
+				        Table.ExpandRecordColumn(
+				            Data, 
+				            "DimProductSubcategory", 
+				            {"EnglishProductSubcategoryName", "DimProductCategory"}, 
+				            {"Product Subcategory", "DimProductCategory"}
+				        ),
+				    Category = 
+				        Table.ExpandRecordColumn(
+				            Subcategory, 
+				            "DimProductCategory", 
+				            {"EnglishProductCategoryName"}, {"Product Category"}
+				        ),
+				    RemoveColumns = 
+				        Table.RemoveColumns(
+				            Category,
+				            {
+				                "ProductSubcategoryKey",
+				                "SpanishProductName", 
+				                "FrenchProductName",
+				                "GermanDescription", 
+				                "FrenchDescription", 
+				                "ChineseDescription", 
+				                "ArabicDescription", 
+				                "HebrewDescription", 
+				                "ThaiDescription", 
+				                "JapaneseDescription", 
+				                "TurkishDescription"
+				            }
+				        ),
+				    RenameColumns = 
+				        Table.RenameColumns(
+				            RemoveColumns,
+				            {
+				                {
+				                    "WeightUnitMeasureCode", "Product Weight Unit"}, 
+				                    {"SizeUnitMeasureCode", "Product Size Unit"}, 
+				                    {"EnglishProductName", "Product Name"}, 
+				                    {"StandardCost", "Product Cost"}, 
+				                    {"FinishedGoodsFlag", "Product Finished Good"}, 
+				                    {"SafetyStockLevel", "Product Safety Stock Level"}, 
+				                    {"ReorderPoint", "Product Reorder Point"}, 
+				                    {"ListPrice", "Product List Price"}, 
+				                    {"SizeRange", "Product Size Range"}, 
+				                    {"DaysToManufacture", "Product Days To Manufacture"}, 
+				                    {"ProductLine", "Product Line"}, 
+				                    {"DealerPrice", "Product Dealer Price"}, 
+				                    {"ModelName", "Product Model"}, 
+				                    {"EnglishDescription", "Product Description"}, 
+				                    {"StartDate", "Product Start Date"}, 
+				                    {"EndDate", "Product End Date"},
+				                    {"Status","Product Status"},
+				                    {"Style","Product Style"},
+				                    {"Weight","Product Weight"},
+				                    {"Class", "Product Class"},
+				                    {"Size", "Product Size"},
+				                    {"Color", "Product Color"}
+				                }
+				            ),
+				//Product Category Group Column
+				    ProductCatGroupCol = Table.AddColumn(RenameColumns,"Product Category Group", each 
+				        if [Product Category] = "Bikes" then "Bikes"
+				        else if [Product Category] = null then "Undefined"
+				        else "Non-Bikes"
+				,type text),
+				//Remove Null Values 
+				    UndefinedCatAndSubcat = Table.ReplaceValue(ProductCatGroupCol,null,"Undefined",Replacer.ReplaceValue,{"Product Subcategory","Product Category"})
+				in
+				    UndefinedCatAndSubcat
+				```
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

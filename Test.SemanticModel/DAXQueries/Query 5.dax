@@ -1,0 +1,7 @@
+DEFINE
+    MEASURE 'Internet Sales'[_internet_sales_amount_sum] = SUM('Internet Sales'[SalesAmount])
+
+EVALUATE
+    SUMMARIZECOLUMNS(
+        "_internet_sales_amount_sum", 'Internet Sales'[_internet_sales_amount_sum]
+    )

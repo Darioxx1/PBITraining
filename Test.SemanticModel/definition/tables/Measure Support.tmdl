@@ -1,0 +1,40 @@
+table 'Measure Support'
+	excludeFromModelRefresh
+	lineageTag: 982034e7-ab13-4ffa-a9e7-cc6ccfac1147
+
+	measure Measure = 1
+		formatString: 0
+		displayFolder: test_folder2
+		lineageTag: 04c9f264-87a8-4b96-aa84-5e65e3fc29a3
+
+	measure test = 1
+		displayFolder: test_folder1
+		lineageTag: 725ae95c-7c73-4940-8303-cb8723a79bb5
+
+		formatStringDefinition = "0"
+
+	column Dummy
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 60497bfb-40a2-4774-a5e4-d37815b87c11
+		summarizeBy: sum
+		sourceColumn: Dummy
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Measure Support-12496da3-2a71-4e7d-80ed-68e2dcff86cd' = m
+		mode: import
+		queryGroup: 'Parameter Tables'
+		source =
+				let
+				    Source = Value.NativeQuery(AdWorksSQLServer, "Select null as Dummy")
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

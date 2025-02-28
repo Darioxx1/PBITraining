@@ -1,0 +1,59 @@
+table 'Sales Territory'
+	lineageTag: 2be7341b-d0de-4565-8576-6c7e62f7804c
+
+	column SalesTerritoryKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 819d0126-25ce-4d02-a059-2c4c1f8a7223
+		summarizeBy: count
+		sourceColumn: SalesTerritoryKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesTerritoryAlternateKey
+		dataType: int64
+		formatString: 0
+		lineageTag: c53e1701-2088-452c-a5f6-cced158c6961
+		summarizeBy: count
+		sourceColumn: SalesTerritoryAlternateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesTerritoryRegion
+		dataType: string
+		lineageTag: 62e5ea6f-972b-4eb7-847b-b28f24c30d66
+		summarizeBy: none
+		sourceColumn: SalesTerritoryRegion
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesTerritoryCountry
+		dataType: string
+		lineageTag: c282babb-1e61-4ba8-8a87-251edb8725aa
+		summarizeBy: none
+		sourceColumn: SalesTerritoryCountry
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesTerritoryGroup
+		dataType: string
+		lineageTag: 092fe707-654d-4c70-bed6-38c7becbab6e
+		summarizeBy: none
+		sourceColumn: SalesTerritoryGroup
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Sales Territory-fe36abc3-74ac-4972-b35e-3e6d60c07d13' = m
+		mode: import
+		queryGroup: 'Dimension Table Queries'
+		source =
+				let
+				    Source = AdWorksSQLServer,
+				    dbo_DimSalesTerritory = Source{[Schema="dbo",Item="DimSalesTerritory"]}[Data]
+				in
+				    dbo_DimSalesTerritory
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Exception
+

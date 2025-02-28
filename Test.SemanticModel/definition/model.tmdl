@@ -1,0 +1,81 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: es-ES
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+queryGroup 'Data Source Parameters'
+
+	annotation PBI_QueryGroupOrder = 1
+
+queryGroup 'Staging Queries'
+
+	annotation PBI_QueryGroupOrder = 2
+
+queryGroup 'Fact Table Queries'
+
+	annotation PBI_QueryGroupOrder = 4
+
+queryGroup 'Parameter Tables'
+
+	annotation PBI_QueryGroupOrder = 3
+
+queryGroup 'Dimension Table Queries'
+
+	annotation PBI_QueryGroupOrder = 5
+
+queryGroup 'Bridge Table Queries'
+
+	annotation PBI_QueryGroupOrder = 6
+
+annotation PBIDesktopVersion = 2.140.1205.0 (25.02)+2ab3defe107764e1cf486b42122d9362df7f34ea
+
+annotation PBI_QueryOrder = ["ProdServer","DevServer","DevDB","UATDB","ProdDB","SalesPlanDirectory","SalesPlanFile","AdWorksSQLServer","SalesPlanFilePath","CurrentDayQry","Internet Sales","Reseller Sales","Date Intelligence Metrics","Adventure Works Sales","Measure Support","Current Date","Currency","Customer","Date","Employee","Promotion","Product","Reseller","Sales Territory","BridgeSalesTerritoryRegion","BridgeBudgetDate","BridgeProductSubCat","Sales and Margin Plan","Trailing3Years","CustomerHistory","SourceDB"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DaxQueryView_Desktop","DevMode"]
+
+ref table 'Internet Sales'
+ref table DateTableTemplate_7c3b4cc5-097c-4131-af64-6e7b36e7143c
+ref table LocalDateTable_91a64fb9-8370-4c91-8e65-05a637cffab9
+ref table LocalDateTable_2f4bf31a-9273-4942-a4bd-0bd96d2d0565
+ref table LocalDateTable_709ab5d5-ebf7-4516-a25c-f2d21e61729f
+ref table 'Reseller Sales'
+ref table LocalDateTable_2e10be0e-1f01-4217-873d-818ceacb2f99
+ref table LocalDateTable_76e7b3a3-c8fa-4233-9406-1d3dee5fca5b
+ref table LocalDateTable_c51668bf-85f6-48f4-835c-ddfa3d41ad3d
+ref table 'Date Intelligence Metrics'
+ref table 'Adventure Works Sales'
+ref table 'Measure Support'
+ref table 'Current Date'
+ref table LocalDateTable_b5b32273-bff3-4096-bd80-abbffe8cf015
+ref table Currency
+ref table Customer
+ref table LocalDateTable_5a7861be-efe5-4199-9da9-c10137514de2
+ref table LocalDateTable_a2dc6ed3-ca83-4538-9099-fa1dc0fd24aa
+ref table Date
+ref table LocalDateTable_7057fae4-fab8-49b5-b5de-114c830f3417
+ref table Employee
+ref table LocalDateTable_0bb86f5d-de00-47aa-82a8-c1e1ebfed1a5
+ref table LocalDateTable_30ffa81b-5c03-4486-8593-ec92fd8592e8
+ref table LocalDateTable_5eb7315b-d988-4e8a-bebb-55f777c1204d
+ref table LocalDateTable_3c88ce3a-69e9-4c12-891d-8239e3eed5fd
+ref table Product
+ref table LocalDateTable_589c11dc-8291-41db-a860-733cd2ccfb38
+ref table LocalDateTable_94f0fd38-86c6-48f4-8ea6-9115170ffcf1
+ref table Reseller
+ref table 'Sales Territory'
+ref table Promotion
+ref table LocalDateTable_76832100-92b4-4672-a737-497cac584ae7
+ref table LocalDateTable_9081d1f4-6400-4eae-99f2-eceecc25fe06
+ref table BridgeSalesTerritoryRegion
+ref table BridgeBudgetDate
+ref table BridgeProductSubCat
+
+ref role All
+
+ref cultureInfo en-US
+

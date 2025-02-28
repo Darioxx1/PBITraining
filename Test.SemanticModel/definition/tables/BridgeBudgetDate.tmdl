@@ -1,0 +1,28 @@
+table BridgeBudgetDate
+	isHidden
+	lineageTag: ef672751-991c-43e8-b2cd-a88a4b4ad839
+
+	column 'Year Month'
+		dataType: string
+		lineageTag: 93c86314-df86-450d-a747-bb59b1274d13
+		summarizeBy: none
+		sourceColumn: Year Month
+
+		annotation SummarizationSetBy = Automatic
+
+	partition BridgeBudgetDate-cc664b7b-0198-4742-bdcb-7de64c8bee8b = m
+		mode: import
+		queryGroup: 'Bridge Table Queries'
+		source =
+				let
+				    YearMonths = Table.SelectColumns(#"Date", "Year Month"),
+				    DistinctYearMonths = Table.Distinct(YearMonths)
+				in
+				    DistinctYearMonths
+
+	changedProperty = IsHidden
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

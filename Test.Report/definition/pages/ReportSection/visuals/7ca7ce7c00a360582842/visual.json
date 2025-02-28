@@ -1,0 +1,33 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
+  "name": "7ca7ce7c00a360582842",
+  "position": {
+    "x": 980.14814814814815,
+    "y": 0,
+    "z": 1000,
+    "height": 135.11111111111111,
+    "width": 299.85185185185185,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "image",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "imageUrl": {
+              "expr": {
+                "ResourcePackageItem": {
+                  "PackageName": "RegisteredResources",
+                  "PackageType": 1,
+                  "ItemName": "AdventureWorks-Logo_blog015140764487152847.jpg"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

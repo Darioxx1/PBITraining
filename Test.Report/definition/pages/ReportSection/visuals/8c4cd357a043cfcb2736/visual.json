@@ -1,0 +1,56 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
+  "name": "8c4cd357a043cfcb2736",
+  "position": {
+    "x": 486.4,
+    "y": 123.73333333333333,
+    "z": 3000,
+    "height": 527.64444444444439,
+    "width": 376.88888888888891,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "autoSelectVisualType": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Employee"
+                    }
+                  },
+                  "Property": "FirstName"
+                }
+              },
+              "queryRef": "Employee.FirstName",
+              "nativeQueryRef": "FirstName"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Employee"
+                  }
+                },
+                "Property": "FirstName"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

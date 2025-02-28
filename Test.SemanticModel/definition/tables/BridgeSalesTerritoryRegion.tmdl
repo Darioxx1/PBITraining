@@ -1,0 +1,31 @@
+table BridgeSalesTerritoryRegion
+	isHidden
+	lineageTag: 1de52cbe-7b4e-4b71-9bcd-fa8e0110ddf1
+
+	column SalesTerritoryRegion
+		dataType: string
+		isHidden
+		lineageTag: 1d304f74-925c-4dcf-ae2f-729212b5cbff
+		summarizeBy: none
+		sourceColumn: SalesTerritoryRegion
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition BridgeSalesTerritoryRegion-607adae6-3960-4926-b4a6-afe39cae9a81 = m
+		mode: import
+		queryGroup: 'Bridge Table Queries'
+		source =
+				let
+				    Regions = Table.SelectColumns(#"Sales Territory", "SalesTerritoryRegion"),
+				    DistinctRegions = Table.Distinct(Regions)
+				in
+				    DistinctRegions
+
+	changedProperty = IsHidden
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

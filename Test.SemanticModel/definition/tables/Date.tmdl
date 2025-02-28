@@ -1,0 +1,240 @@
+table Date
+	lineageTag: 1612d714-4ee1-4332-a266-69a0cd63dfc6
+
+	column DateKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 431f59fa-71cf-4efd-8e68-c4d411e334c2
+		summarizeBy: none
+		sourceColumn: DateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 178d9810-0cd1-4717-af8f-70eb9b80a783
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variation
+			isDefault
+			relationship: 797ff300-dd5c-4612-a893-3feb5484c0a0
+			defaultHierarchy: LocalDateTable_7057fae4-fab8-49b5-b5de-114c830f3417.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Weekday Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3e2c7515-20fa-436d-bcc2-935ce88cddb8
+		summarizeBy: sum
+		sourceColumn: Weekday Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Weekday Name'
+		dataType: string
+		lineageTag: ad13e684-70a5-4105-a391-7490d45a166a
+		summarizeBy: none
+		sourceColumn: Weekday Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day of Month'
+		dataType: int64
+		formatString: 0
+		lineageTag: ff40f5fc-c11b-4718-b810-f063f2ad0c2b
+		summarizeBy: sum
+		sourceColumn: Day of Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day of Year'
+		dataType: int64
+		formatString: 0
+		lineageTag: 6a5e2488-a662-480b-8580-aa958f2f0abe
+		summarizeBy: sum
+		sourceColumn: Day of Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Week of Year'
+		dataType: int64
+		formatString: 0
+		lineageTag: 7dcb3322-bd26-4ad2-ae18-65abd8182469
+		summarizeBy: sum
+		sourceColumn: Week of Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Name'
+		dataType: string
+		lineageTag: bc29a962-7676-4637-994d-1a52d480f1b2
+		summarizeBy: none
+		sourceColumn: Month Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: 55a9615d-2a68-4199-9c8b-bd645e5772d6
+		summarizeBy: sum
+		sourceColumn: Month Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Calendar Quarter'
+		dataType: int64
+		formatString: 0
+		lineageTag: 244c1eaf-f5f3-4860-b39d-73b15e358070
+		summarizeBy: sum
+		sourceColumn: Calendar Quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Calendar Year'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5bb1fcad-0400-492e-841a-3d4acb2bb4a5
+		summarizeBy: sum
+		sourceColumn: Calendar Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Calendar Semester'
+		dataType: int64
+		formatString: 0
+		lineageTag: ca20203d-779b-45b7-af46-8d1dc1b85811
+		summarizeBy: sum
+		sourceColumn: Calendar Semester
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fiscal Quarter'
+		dataType: int64
+		formatString: 0
+		lineageTag: 200c9788-93b3-41cc-95ce-b31e55d2e322
+		summarizeBy: sum
+		sourceColumn: Fiscal Quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fiscal Year'
+		dataType: int64
+		formatString: 0
+		lineageTag: ade7d1b8-e1a3-48f6-837b-53568cf0883e
+		summarizeBy: sum
+		sourceColumn: Fiscal Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fiscal Semester'
+		dataType: int64
+		formatString: 0
+		lineageTag: b6dfcde7-d829-4b0d-b153-e7a7e0bcb698
+		summarizeBy: sum
+		sourceColumn: Fiscal Semester
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Month'
+		dataType: string
+		lineageTag: 376190e0-2c5a-44a1-9a52-e037d1985434
+		summarizeBy: none
+		sourceColumn: Year Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Month Sort'
+		dataType: string
+		lineageTag: 5c2b62de-be94-4dd9-91ac-5eff8ea71d28
+		summarizeBy: none
+		sourceColumn: Year Month Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Calendar Yr-Qtr'
+		dataType: string
+		lineageTag: 944257d6-3fac-44b4-8a8d-682b5b25f499
+		summarizeBy: none
+		sourceColumn: Calendar Yr-Qtr
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Calendar Yr-Qtr Sort'
+		dataType: string
+		lineageTag: 3ead88a6-811f-4262-8a4b-0fcb0468aded
+		summarizeBy: none
+		sourceColumn: Calendar Yr-Qtr Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Date-bdc536f5-1b9a-43ee-8379-334bd121296b = m
+		mode: import
+		queryGroup: 'Dimension Table Queries'
+		source = ```
+				let
+				    Source = AdWorksSQLServer,
+				    Data = Source{[Schema="dbo",Item="DimDate"]}[Data],
+				    RemoveColumns = 
+				        Table.RemoveColumns(
+				            Data,
+				            {
+				                "SpanishDayNameOfWeek", 
+				                "FrenchDayNameOfWeek", 
+				                "SpanishMonthName", 
+				                "FrenchMonthName"
+				            }
+				        ),
+				    RenameColumns = 
+				        Table.RenameColumns(
+				            RemoveColumns,
+				            {
+				                {"DayNumberOfWeek", "Weekday Number"}, 
+				                {"EnglishDayNameOfWeek", "Weekday Name"}, 
+				                {"DayNumberOfMonth", "Day of Month"}, 
+				                {"DayNumberOfYear", "Day of Year"}, 
+				                {"WeekNumberOfYear", "Week of Year"}, 
+				                {"EnglishMonthName", "Month Name"}, 
+				                {"MonthNumberOfYear", "Month Number"}, 
+				                {"CalendarQuarter", "Calendar Quarter"}, 
+				                {"CalendarYear", "Calendar Year"}, 
+				                {"CalendarSemester", "Calendar Semester"}, 
+				                {"FiscalQuarter", "Fiscal Quarter"}, 
+				                {"FiscalYear", "Fiscal Year"}, 
+				                {"FiscalSemester", "Fiscal Semester"},
+				                {"FullDateAlternateKey", "Date"}
+				            }
+				        ),
+				    YearMonth = 
+				        Table.AddColumn(
+				            RenameColumns, 
+				            "Year Month", each Text.From([Calendar Year]) & "-" & Text.Start([Month Name],3)
+				        ),
+				    YearMonthSort = 
+				        Table.AddColumn(
+				            YearMonth, 
+				            "Year Month Sort", each [Calendar Year] * 100 + [Month Number]
+				        ),
+				    CalendarQuarter = 
+				        Table.AddColumn(
+				            YearMonthSort, 
+				            "Calendar Yr-Qtr", each Text.From([Calendar Year]) & "-Q" & Text.From([Calendar Quarter])
+				        ),
+				    CalendarQuarterSort = 
+				        Table.AddColumn(
+				            CalendarQuarter, 
+				            "Calendar Yr-Qtr Sort", each [Calendar Year] * 100 + [Calendar Quarter]
+				        )
+				in
+				    CalendarQuarterSort
+				```
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

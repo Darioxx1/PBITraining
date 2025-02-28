@@ -1,0 +1,178 @@
+relationship f2c89a20-6413-40ab-a388-52aa6acae60a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Internet Sales'.OrderDate
+	toColumn: LocalDateTable_91a64fb9-8370-4c91-8e65-05a637cffab9.Date
+
+relationship 5e8cf58c-5246-4bac-8c78-20577681953b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Internet Sales'.DueDate
+	toColumn: LocalDateTable_2f4bf31a-9273-4942-a4bd-0bd96d2d0565.Date
+
+relationship 307c7b6f-19fa-41ba-9b94-019fae89275e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Internet Sales'.ShipDate
+	toColumn: LocalDateTable_709ab5d5-ebf7-4516-a25c-f2d21e61729f.Date
+
+relationship f36880f4-f758-4b63-a2fd-5732eea02c5f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Reseller Sales'.OrderDate
+	toColumn: LocalDateTable_2e10be0e-1f01-4217-873d-818ceacb2f99.Date
+
+relationship d5c7c4c5-db11-439d-a456-56d841d7f1e8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Reseller Sales'.DueDate
+	toColumn: LocalDateTable_76e7b3a3-c8fa-4233-9406-1d3dee5fca5b.Date
+
+relationship 830f7c6f-2c56-4e71-be6b-968f8131c3e6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Reseller Sales'.ShipDate
+	toColumn: LocalDateTable_c51668bf-85f6-48f4-835c-ddfa3d41ad3d.Date
+
+relationship 852ef3a8-31b7-4eee-965b-82b82aaa9530
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Current Date'.CurrentDate
+	toColumn: LocalDateTable_b5b32273-bff3-4096-bd80-abbffe8cf015.Date
+
+relationship 876e68c6-c738-4dd4-8c6a-70ad52a085f5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Customer.BirthDate
+	toColumn: LocalDateTable_5a7861be-efe5-4199-9da9-c10137514de2.Date
+
+relationship f0e5692f-f0e9-48c5-b54f-3de547b4126d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Customer.DateFirstPurchase
+	toColumn: LocalDateTable_a2dc6ed3-ca83-4538-9099-fa1dc0fd24aa.Date
+
+relationship 797ff300-dd5c-4612-a893-3feb5484c0a0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Date.Date
+	toColumn: LocalDateTable_7057fae4-fab8-49b5-b5de-114c830f3417.Date
+
+relationship 2a6d357e-d0f4-4959-839e-7168cd181d02
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Employee.HireDate
+	toColumn: LocalDateTable_0bb86f5d-de00-47aa-82a8-c1e1ebfed1a5.Date
+
+relationship da2d0538-cd57-4195-bf02-0a803892ea81
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Employee.BirthDate
+	toColumn: LocalDateTable_30ffa81b-5c03-4486-8593-ec92fd8592e8.Date
+
+relationship 98406818-ba49-48b2-8c80-9e8450ebe433
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Employee.StartDate
+	toColumn: LocalDateTable_5eb7315b-d988-4e8a-bebb-55f777c1204d.Date
+
+relationship 8e4acc76-5174-4e3f-afbc-97fb965a41d4
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Employee.EndDate
+	toColumn: LocalDateTable_3c88ce3a-69e9-4c12-891d-8239e3eed5fd.Date
+
+relationship 7925555a-1c77-45ad-a40c-a6f7d5e8a896
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Product.'Product Start Date'
+	toColumn: LocalDateTable_589c11dc-8291-41db-a860-733cd2ccfb38.Date
+
+relationship dc6b8314-d3d8-4e06-9435-eae345638518
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Product.'Product End Date'
+	toColumn: LocalDateTable_94f0fd38-86c6-48f4-8ea6-9115170ffcf1.Date
+
+relationship 1bfe81ec-a997-4f47-8887-93893641b1ad
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Promotion.StartDate
+	toColumn: LocalDateTable_76832100-92b4-4672-a737-497cac584ae7.Date
+
+relationship 9aa82e05-a223-4bc7-89c7-33dadb2a6a78
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Promotion.EndDate
+	toColumn: LocalDateTable_9081d1f4-6400-4eae-99f2-eceecc25fe06.Date
+
+relationship bbc668a9-c0d3-4b0d-8efc-72652e910ec4
+	fromColumn: 'Internet Sales'.CurrencyKey
+	toColumn: Currency.CurrencyKey
+
+	annotation PBI_IsFromSource = FS
+
+relationship 25e98f71-e620-4966-a6eb-7c6ef1a00b16
+	fromColumn: 'Internet Sales'.DueDateKey
+	toColumn: Date.DateKey
+
+	annotation PBI_IsFromSource = FS
+
+relationship a0be7e2f-26c4-4b99-b6bd-9f346d0da77c
+	isActive: false
+	fromColumn: 'Internet Sales'.OrderDateKey
+	toColumn: Date.DateKey
+
+	annotation PBI_IsFromSource = FS
+
+relationship 8c658813-8762-4cb7-896c-1f5ccd7504dc
+	isActive: false
+	fromColumn: 'Internet Sales'.ShipDateKey
+	toColumn: Date.DateKey
+
+	annotation PBI_IsFromSource = FS
+
+relationship b873d53c-c544-493a-9920-f7342c2a6d13
+	fromColumn: 'Internet Sales'.ProductKey
+	toColumn: Product.ProductKey
+
+	annotation PBI_IsFromSource = FS
+
+relationship 5c766bec-b006-488f-9c88-edadc9621a43
+	fromColumn: 'Internet Sales'.PromotionKey
+	toColumn: Promotion.PromotionKey
+
+	annotation PBI_IsFromSource = FS
+
+relationship d9c5bd64-3aec-40f3-904f-e46fb4830657
+	fromColumn: 'Reseller Sales'.CurrencyKey
+	toColumn: Currency.CurrencyKey
+
+	annotation PBI_IsFromSource = FS
+
+relationship 319665ab-585b-44a3-8f57-38f3f846ea72
+	fromColumn: 'Reseller Sales'.DueDateKey
+	toColumn: Date.DateKey
+
+	annotation PBI_IsFromSource = FS
+
+relationship 329973c3-622c-4ff0-8d7d-16d1b7ac47c0
+	isActive: false
+	fromColumn: 'Reseller Sales'.OrderDateKey
+	toColumn: Date.DateKey
+
+	annotation PBI_IsFromSource = FS
+
+relationship 380eb96b-302e-4200-a553-11c87d619406
+	isActive: false
+	fromColumn: 'Reseller Sales'.ShipDateKey
+	toColumn: Date.DateKey
+
+	annotation PBI_IsFromSource = FS
+
+relationship 96812ad8-f31d-4ef9-8232-ddc1fb85b11a
+	fromColumn: 'Reseller Sales'.EmployeeKey
+	toColumn: Employee.EmployeeKey
+
+	annotation PBI_IsFromSource = FS
+
+relationship 58bf1b6d-0dfa-4247-82a7-b04c9dcd7789
+	fromColumn: 'Reseller Sales'.ProductKey
+	toColumn: Product.ProductKey
+
+	annotation PBI_IsFromSource = FS
+
+relationship 119836af-c660-4be0-ad3f-0aaa29f198ab
+	fromColumn: 'Reseller Sales'.PromotionKey
+	toColumn: Promotion.PromotionKey
+
+	annotation PBI_IsFromSource = FS
+
+relationship 476e39c4-d0bc-4997-8326-b01f250776f3
+	fromColumn: 'Reseller Sales'.ResellerKey
+	toColumn: Reseller.ResellerKey
+
+	annotation PBI_IsFromSource = FS
+
